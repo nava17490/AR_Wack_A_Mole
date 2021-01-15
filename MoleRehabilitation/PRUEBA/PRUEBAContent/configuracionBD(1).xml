@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <!-- TODO: replace this Asset with your own XML asset data. -->
+  <Asset Type="ConfiguracionInterfaz.DatosBD">
+      <baseDatos>tfc</baseDatos>
+      <servidor>localhost</servidor>
+      <usuario>user</usuario>
+      <password>user</password>
+  </Asset>
+</XnaContent>

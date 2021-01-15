@@ -1,0 +1,133 @@
+Goblin XNA Release Notes
+
+Version 4.0 (2/22/2012)
+
+
+Updates:
+
+1. Added KinectMSCapture which implements IVideoCapture using Microsoft's Kinect SDK (latest release). 
+
+2. Rewrote the shadow mapping shader so that it works with multiple lights, and Point and Spot light
+   types in addition to Directional light. (Thanks to Janessa Det). Please see Tutorial 8 on how to
+   enable the shadow mapping. There are several changes from 3.x series. 
+
+3. Added LightNode.CastShadows property so that the programmer can specify whether a light node should
+   cast shadows. Also added LightNode.LightProjection property, which is needed for shadow mapping.
+
+4. Added TexturedBox and TexturedSphere in Graphics.Geometry package that includes texture coordinates. 
+   These are just here for being able to render shadows using primitive box and sphere models. Texture 
+   coordinates are assigned using positional and normal spherical mapping respectively.
+
+5. Added AlphaTestShader that uses AlphaTestEffect for transparent textures and billboards. 
+
+6. Added support for playing SoundEffect in Sound class. 
+
+7. Added DebugShapeRenderer in GoblinXNA.Graphics to replace GoblinXNA.Graphics.LineManager3D and 
+   GoblinXNA.Shaders.Line3DShader. This way, it works on the Windows Mobile 7 as well since it doesn't
+   use a custom shader.
+
+8. Added a support for calibrating cameras from a series of images in CameraCalibration project under
+   tools directory. This support will allow the user to calibrate various types of cameras not limited
+   to webcams (e.g., cameras on the phone, Kinect camera, regular photo camera, etc)
+
+9. Added capability to adjust the maximum number of bytes that can be transferred for each 
+   INetworkObject (including the length of its Identifier). It used to be 65535 (size of short), but 
+   now you can change it to the size of int or long to handle INetworkObject that needs to send
+   much larger data by changing INetworkHandler.TransferSizePerNetworkObject property. If you modify
+   this property, make sure to modify it on both ends (server and clients).
+
+10. Added Model.ContainsTransparency property. If you're loaded model's internal texture or material
+   contains transparency, set this to true. Otherwise, your model will be drawn with opaque colors
+   for optimization purposes.
+
+11. Added much faster Unproject and Project functions in MatrixHelper compared to Viewport.Project 
+   and Viewport.Unproject methods. Also added XML saving and loading functions for Matrix object. 
+
+12. Added LightSource.TransformedDirection and LightSource.TransformedPosition for accessing the 
+   transformed direction and position for lights. 
+
+13. Added Text3D in Graphics package that inherits PrimitiveModel class. UI3DRenderer.Write3DText is still 
+   there, but if you want to cast shadows or use the text for physics simulation, then you need to use this 
+   new Text3D class. Outline is not working
+
+14. Added TexturedPlane in Graphics.Geometry package.
+
+15. Added PointGreyCapture2.1 in Device.Capture package that works with 2.1 series of point grey software.
+   The previous PointGreyCapture has been remanted to PointGreyCapture1.7 which only works with point grey
+   1.7 series.
+
+16. Added a couple of lines to G2DSpinner to update the current value in the UI.
+
+17. Added MarkerNode.InverseCameraView property. If your camera's view matrix is not Matrix.Identity, then you
+   need to set this property to make the virtual contents appear correctly on top of the tracked markers.
+
+18. Added GeometryNode.AlwaysRender property to set whether to render the geometry regardless of whether the
+    associated model's bounding sphere is within the frustum of the main camera. Scene.EnableFrustumCulling
+    makes everything in the scene render regardless of their bounding sphere, and this property allows
+    for individual node.
+
+19. Added IMarkerTracker.EnableTracking property, which allows you to control whether you want the marker
+    tracker to perform tracking. You can use this to optimize your application by turning it off when you don't
+    need it. The default value is true. 
+
+20. Added Tutorial 16 that demonstrates how to render multiple viewports.
+
+21. Added Scene.RenderScene(bool leftView, bool reTraverseScenegraph) method that allows rendering the scene
+    after re-traversing the scene graph. This method is used in Tutorial 16.
+
+22. Added Scene.RenderBeforeBackgroundCallback property
+
+23. Added Scene.RenderAfterBackgroundCallback property
+
+
+Bug Fixes:
+
+1. Fixed some issues in NullCapture.
+
+2. There were some bugs for setting StereoCamera's LeftView, RightView, LeftProjection, and RightProjection
+   matrices directly, and now they are fixed.
+
+3. Now ALVARMarker ZNearPlane and ZFarPlane actually takes effect. Before, these info were not passed to ALVAR 
+   for generating the projection matrix. 
+
+4. Updated IClient and IServer's ReceiveMessages interface and changed the implementation in LidgrenClient and 
+   LidgrenServer to avoid massive memory reallocation every time a new data is received.
+
+
+Changes:
+
+1. The following changes are made to enable integration of GoblinXNA with Silverlight and WPF:
+
+   (a) State.InitGoblin(GraphicsDeviceManger, ..., ...) signature has been changed to 
+   State.InitGoblin(IGraphicsDeviceService, ..., ...). Accordingly, State.Graphics is a type of 
+   IGraphicsDeviceService instead of GraphicsDeviceManager.
+
+   (b) Scene does NOT inherit GameComponent anymore, so you don't need to pass the Game instance to its
+   constructor anymore when initializing the scene class. This means that you MUST call scene.Update(..)
+   scene.Draw(..), and scene.Dispose(..) in each of the appropriate section in your code (e.g., 
+   call scene.Update(...) in your Game.Update(...) method).
+
+   (c) Scene.Update(...) method signatures are changed to (TimeSpan, TimeSpan, bool, bool), and this also
+   changes all the signature of all other classes that require Update method with GameTime parameter
+   (e.g., InputMapper, ParticleEffect, etc)
+
+2. Modified all tutorials, tools, and projects in accordance with the above change.
+
+3. In order to optimize the networking, we reduced significant amount of redundant buffer copying.
+   Due to this optimization, we have changed INetworkObject interface for Interpret(...) method.
+   Make sure that you only interpret the data within the given range starting at 'startIndex' with
+   the given 'length'.
+
+4. Changed the ClientDisconnected and ClientConnected signatures.
+
+5. Modified some of the Matrix value passing to ref passing in APIs to reduce redundant value copying.
+
+6. Removed Scene.PreferPerPixelShading property. This property is only for SimpleEffectShader, so if one 
+   needs it, then just set PreferPerPixelShader directly for that specific SimpleEffectShader instance.
+
+7. Made ALVARWrapper more flexible to be able to handle multiple marker detectors and cameras (with different 
+   intrinsic and distortion parameters). The interface in Goblin XNA has been changed as well.
+
+8. Removed IVideoCapture.FocalPoint property.
+
+9. Updated Lidgren library to gen3-2012-02-15 release.

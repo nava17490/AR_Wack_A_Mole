@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+    <Asset Type="ConfiguracionInterfaz.PosicionesPantalla">
+        <!-- Parametros comunes-->
+        <resolucion>0 0 1366 768</resolucion>
+        <titulo>0 50 1366 25</titulo>
+        <panelParametros>150 150 1066 400 </panelParametros>
+        <botonMedio>964 600 122 62</botonMedio>
+        <botonVolver>150 600 122 62</botonVolver>
+        <botonContinuar>1094 600 122 62</botonContinuar>
+
+        <!-- Parametros Pantalla Seleccion Paciente-->        
+        <listaPacientes>150 100 1066 400</listaPacientes>
+        <scroll>1066 0 66 400</scroll>
+        <etiquetaError>300 625 500 25</etiquetaError>
+        <botonGuardar>1160 510 50 50</botonGuardar>
+        <campoTexto>150 510 1000 50</campoTexto>
+
+        <!-- Parametros Pantalla Menú Principal-->
+        <botonJugar>600 292 185 35</botonJugar>
+        <botonOtroPaciente>600 342 185 35</botonOtroPaciente>
+        <botonEstadisticas>600 391 185 35</botonEstadisticas>
+        <botonSalir>600 441 185 35</botonSalir>
+
+        <!-- Parametros Pantalla Configuracion-->
+        <numeroSesiones>185 185 200 50</numeroSesiones>
+        <duracionSesion>185 285 200 50</duracionSesion>
+        <tiempoMargen>185 385 200 50</tiempoMargen>
+        <tiempoDescanso>185 485 200 50</tiempoDescanso>
+        <resultadoNumeroSesiones>1020 185 60 60</resultadoNumeroSesiones>
+        <resultadoDuracionSesion>1020 285 60 60</resultadoDuracionSesion>
+        <resultadoTiempoMargen>1020 385 60 60</resultadoTiempoMargen>
+        <resultadoTiempoDescanso>1020 485 60 60</resultadoTiempoDescanso>
+        <incrementarNumeroSesiones>1106 170 60 60</incrementarNumeroSesiones>
+        <incrementarDuracionSesion>1106 270 60 60</incrementarDuracionSesion>
+        <incrementarTiempoMargen>1106 370 60 60</incrementarTiempoMargen>
+        <incrementarTiempoDescanso>1106 470 60 60</incrementarTiempoDescanso>
+        <decrementarNumeroSesiones>900 170 60 60</decrementarNumeroSesiones>
+        <decrementarDuracionSesion>900 270 60 60</decrementarDuracionSesion>
+        <decrementarTiempoMargen>900 370 60 60</decrementarTiempoMargen>
+        <decrementarTiempoDescanso>900 470 60 60</decrementarTiempoDescanso>
+
+        <!-- Parametros pantalla Estadisticas -->
+        <elegirSesiones>185 150 200 50</elegirSesiones>
+        <selectorSesiones>1000 150 200 50</selectorSesiones>
+        <tiempoJugado>185 240 200 50</tiempoJugado>
+        <aciertos>185 330 200 50</aciertos>
+        <fallos>185 420 200 50</fallos>
+        <tiempoRealizacionEjercicio>185 510 200 50</tiempoRealizacionEjercicio>
+        <tiempoReaccion>185 600 200 50</tiempoReaccion>
+        <resultadoTiempoJugado>1000 240 90 50</resultadoTiempoJugado>
+        <resultadoAciertos>1000 330 90 50</resultadoAciertos>
+        <resultadoFallos>1000 420 90 50</resultadoFallos>
+        <resultadoTiempoRealizacionEjercicio>1000 510 90 50</resultadoTiempoRealizacionEjercicio>
+        <resultadoTiempoReaccion>1000 600 90 50</resultadoTiempoReaccion>        
+        <botonVolverMenu>1100 700 190 50</botonVolverMenu>
+
+        <!-- Parametros Pantalla Juego-->
+        <aciertosJuego>60 60 50 50</aciertosJuego>
+        <fallosJuego>60 110 50 50</fallosJuego>
+        <iconoAciertos>0 60 50 50</iconoAciertos>
+        <iconoFallos>0 110 50 50</iconoFallos>
+        <marcador>600 0 150 110</marcador>
+        <topoIzq>300 600</topoIzq>
+        <topoDcha>900 600</topoDcha>
+        <tiempo>650 50</tiempo>
+
+        <marcadorDescanso>300 200 700 300</marcadorDescanso>
+
+        <introduccion>500 400 50 600</introduccion>
+    </Asset>
+</XnaContent>
